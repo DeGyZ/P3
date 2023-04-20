@@ -1,5 +1,6 @@
 let works = []
 let categories = []
+let all = []
 let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
 const fetchWorks = async () =>{
@@ -42,26 +43,53 @@ const displayWorks = async () =>{
 }
 displayWorks()
 
-const displayCategories = async () =>{
+async function displayCategories() {
     await fetchWorks()
     await fetchCategories()
     console.log(categories)
 
-    for(let category of categories){
+    categories.unshift({name:"Tous"})
+
+    for (let category of categories) {
         let button = document.createElement("button")
         button.innerText = category.name
         filters.appendChild(button)
-        button.addEventListener("click", function(event){
+        button.addEventListener("click", function (event) {
             let figures = document.querySelectorAll(".gallery figure")
-            for(let figure of figures){
-                if(parseInt(figure.getAttribute("data-categoryId")) === category.id){
+            for (let figure of figures) {
+                console.log(category.id)
+                if (category.id !== undefined){
+                    if (parseInt(figure.getAttribute("data-categoryId")) === category.id) {
+                        figure.classList.replace("hidden", "display")
+                    } else {
+                        figure.classList.replace("display", "hidden")
+                    }
+                } else {
                     figure.classList.replace("hidden", "display")
-                }else{
-                    figure.classList.replace("display", "hidden")
                 }
+                
             }
         })
     }
 }
 displayCategories()
 
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
