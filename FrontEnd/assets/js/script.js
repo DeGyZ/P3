@@ -3,6 +3,7 @@ let categories = []
 let all = []
 let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
+let galleryModal = document.querySelector(".projets .gallery")
 const fetchWorks = async () =>{
     await  fetch("http://localhost:5678/api/works")
     .then((response)=>response.json()) 
@@ -73,6 +74,7 @@ async function displayCategories() {
     }
 }
 displayCategories()
+
 
 var modal = document.getElementById("myModal");
 

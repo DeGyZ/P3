@@ -5,7 +5,7 @@ let password = document.getElementById('password')
 let loginForm = document.getElementById('loginForm')
 let responseErreur = document.getElementById('responseErreur')
 
-loginForm.addEventListener('click', (event) =>{
+loginForm.addEventListener('submit', (event) =>{
     event.preventDefault()
     event.stopPropagation()
     let validation = 0
@@ -21,10 +21,19 @@ loginForm.addEventListener('click', (event) =>{
         erreurEmail.innerText = ""
         validation++
     }
+
+    if(password.value === "" ){
+        password.style.border = "2px solid red"
+        erreurPassword.innerText = "Ce champ ne doit pas être vide"
+    } else {
+        password.style.border = "2px solid green"
+        erreurPassword.innerText = ""
+        validation++
+    }
     
 
 
-    if(validation < 1){
+    if(validation < 2){
         console.log(email)
         fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
@@ -42,7 +51,7 @@ loginForm.addEventListener('click', (event) =>{
                 let token = response.token
                 sessionStorage.setItem("isLoggedIn", isLoggedIn)
                 sessionStorage.setItem("Token", token)
-                // location.assign("index.html") 
+                location.assign("index.html") 
             }
         })     
     }

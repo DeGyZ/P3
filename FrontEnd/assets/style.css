@@ -63,12 +63,36 @@ body {
 	position: relative;
 	min-height: 96.2vh;
 }
-header {
+.header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px auto;
 	max-width: 1140px;
 }
+/* Barre Login */
+.topLogin {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: black;
+	height: 50px;
+	color: white;
+	/* display: none; */
+}
+.edition{
+	margin: 2%;
+	width: 120px;
+	display: flex;
+	justify-content: space-around;
+}
+.publier{
+	padding: 1%;
+	background-color: white;
+	color: black;
+	border-radius: 20px;
+}
+/* Fin barre Login */
 main {
 	max-width: 1140px;
 	margin: 0 auto;
@@ -115,7 +139,6 @@ li:hover {
 }
 
 /* Modale */
-
 .modal {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
@@ -129,7 +152,6 @@ li:hover {
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
   .modal-content {
 	background-color: #fefefe;
 	margin: auto;
@@ -137,21 +159,18 @@ li:hover {
 	border: 1px solid #888;
 	width: 80%;
   }
-  
   .close {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
   }
-  
   .close:hover,
   .close:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
   }
-
 /* Fin Modale */
 
 #introduction {
@@ -177,10 +196,7 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
-	text-align: center;
-	/* margin-bottom: 1em; */
-}
+
 
 .filters {
 	display: flex;
@@ -287,3 +303,51 @@ footer nav ul {
 	margin: 2em
 }
 
+/* Modale */
+.projets{
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	margin: 1%;
+}
+.projets h2{
+	margin-right: 2%;
+}
+.projets h1{
+	color: #000;
+	font-family: 'work sans';
+	font-size: 26px;
+	font-weight: 400;
+	margin: 1%;
+}
+.inter{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.add{
+	width: 237px;
+	padding: 2%;
+	background-color: #1D6154;
+	border-radius: 20px;
+	margin: 1%;
+}
+.sup{
+	color: red;
+	margin: 1%;
+}
+
+#myBtn{
+	background-color: #fffef8;
+	font-size: large;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 110px;
+	/* display: none; */
+}
+#myBtn i{
+	margin-right: 3%;
+}
+/* Fin Modale */
