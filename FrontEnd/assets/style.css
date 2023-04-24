@@ -93,6 +93,12 @@ body {
 	border-radius: 20px;
 }
 /* Fin barre Login */
+.login{
+	display: none;
+}
+.logOut{
+	/* display: hidden; */
+}
 main {
 	max-width: 1140px;
 	margin: 0 auto;
@@ -325,6 +331,11 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+.projets .galleryTwo{
+	margin: 1% auto;
+	width: 420px;
+	border-bottom: solid 1px #B3B3B3;
 }
 .add{
 	width: 237px;

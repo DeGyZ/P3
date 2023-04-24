@@ -30,11 +30,10 @@ loginForm.addEventListener('submit', (event) =>{
         erreurPassword.innerText = ""
         validation++
     }
-    
 
 
-    if(validation < 2){
-        console.log(email)
+    if(validation = 2){
+        console.log(email.value)
         fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {
@@ -42,13 +41,15 @@ loginForm.addEventListener('submit', (event) =>{
               },
               body: JSON.stringify({email:email.value, password:password.value})
         })
-        .then((response) => {
-            console.log(response.status)
-            if(response.status !== 200){
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.message)
+            if(data.message === "user not found"){
                 responseErreur.innerText = "Identifiants ou mot de passe incorrect"
             } else{
+                // console.log(data.body)
                 let isLoggedIn = true
-                let token = response.token
+                let token = data.token
                 sessionStorage.setItem("isLoggedIn", isLoggedIn)
                 sessionStorage.setItem("Token", token)
                 location.assign("index.html") 

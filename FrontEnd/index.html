@@ -23,7 +23,8 @@
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li class="login">login</li>
+			<li class="LogOut">Logout</li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -45,18 +46,7 @@
 	<section class="projets">
 		<h2>Mes Projets</h2>
 			<button id="myBtn"><i class="fa-regular fa-pen-to-square"></i>modifier</button>
-			<div id="myModal" class="modal">
-				<div class="modal-content">
-					<span class="close">&times;</span>
-						<h1>Galerie photo</h1>
-							<div class="gallery"></div>
-								<div class="inter">
-									<div class="add">Ajouter une photo</div>
-									<div class="sup">supprimer la galerie</div>
-								</div>
-							</div>
-				</div>
-		</section>
+	</section>
 	<section id="portfolio">
 
 		<div class="filters"></div>
@@ -65,10 +55,7 @@
 	<section id="contact">
 		<h2>Contact</h2>
 		<p>Vous avez un projet ? Discutons-en !</p>
-		<form
-		
-		
-		action="" method="post">
+		<form action="" method="post">
 			<label for="name">Nom</label>
 			<input type="text" name="name" id="name">
 			<label for="email">Email</label>
@@ -79,6 +66,23 @@
 		</form>
 	</section>
 </main>
+<div  class="projets">
+<div id="myModal" class="modal">
+	<div class="modal-content">
+		<span class="close">&times;</span>	
+		<div class="contentGallery">
+		<h3>Galerie photo</h3>
+			<div class="galleryTwo"></div>
+			<div class="inter">
+				<div class="add">Ajouter une photo</div>
+				<div class="sup">supprimer la galerie</div>
+			</div>
+		</div>
+		<div class="contentFormulaire">
+
+		</div>
+	</div>
+</div>
 <footer>
 	<nav>
 		<ul>
@@ -87,5 +91,6 @@
 	</nav>
 </footer>
 <script src="assets/js/script.js"></script>
+<script src="assets/js/modal.js"></script>
 </body>
 </html>

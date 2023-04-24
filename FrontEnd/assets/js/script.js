@@ -3,7 +3,7 @@ let categories = []
 let all = []
 let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
-let galleryModal = document.querySelector(".projets .gallery")
+let galleryTwo = document.querySelector(".galleryTwo")
 const fetchWorks = async () =>{
     await  fetch("http://localhost:5678/api/works")
     .then((response)=>response.json()) 
@@ -76,22 +76,8 @@ async function displayCategories() {
 displayCategories()
 
 
-var modal = document.getElementById("myModal");
 
-var btn = document.getElementById("myBtn");
+console.log(sessionStorage.getItem("Token"))
+console.log(sessionStorage.getItem("isLoggedIn"))
 
-var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
