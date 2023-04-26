@@ -5,6 +5,36 @@ let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
 let galleryTwo = document.querySelector(".galleryTwo")
 
+let token = sessionStorage.getItem('Token')
+
+let logIn = document.querySelector(".logIn")
+let logOut = document.querySelector(".logOut")
+let topLogin = document.querySelector(".topLogin")
+let modifOne = document.querySelector(".modifOne")
+let modifTwo = document.querySelector(".modifTwo")
+let modalButton = document.querySelector(".modalButton")
+
+
+function adminMode() {
+    if( token ) {
+        logIn.classList.add("caché")
+        filters.classList.remove("filters")
+        filters.classList.add("caché")
+    }  else {
+        topLogin.classList.remove("topLogin")
+        topLogin.classList.add("caché")
+        modalButton.removeAttribute("id")
+        modalButton.classList.remove("modalButton")
+        modalButton.classList.add("caché")
+        modifOne.classList.add("caché")
+        modifTwo.classList.add("caché")
+        logOut.classList.add("caché")        
+    }
+
+
+}
+adminMode()
+
 async function fetchWorks() {
     await fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
