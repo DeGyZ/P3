@@ -58,8 +58,3 @@ loginForm.addEventListener('submit', (event) =>{
     }
 
 })
-
-
-   
-
-

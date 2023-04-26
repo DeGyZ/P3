@@ -4,14 +4,15 @@ let all = []
 let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
 let galleryTwo = document.querySelector(".galleryTwo")
-const fetchWorks = async () =>{
-    await  fetch("http://localhost:5678/api/works")
-    .then((response)=>response.json()) 
-    .then((worksResponse)=>{
-        // console.log(worksResponse)
-        works = worksResponse
-    })
-    .catch(error => console.log(error))
+
+async function fetchWorks() {
+    await fetch("http://localhost:5678/api/works")
+        .then((response) => response.json())
+        .then((worksResponse) => {
+            // console.log(worksResponse)
+            works = worksResponse;
+        })
+        .catch(error => console.log(error));
 }
 
 const fetchCategories = async () =>{
@@ -75,9 +76,5 @@ async function displayCategories() {
 }
 displayCategories()
 
-
-
 console.log(sessionStorage.getItem("Token"))
 console.log(sessionStorage.getItem("isLoggedIn"))
-
-

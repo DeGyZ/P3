@@ -33,7 +33,7 @@ const displayWorksTwo = async () =>{
         image.setAttribute("src",work.imageUrl)
         image.setAttribute("alt",work.title)
         let figcaption = document.createElement("figcaption")
-        figcaption.innerText = work.title
+        figcaption.innerText = "éditer"
         figure.appendChild(image)
         figure.appendChild(figcaption)
         galleryTwo.appendChild(figure)
