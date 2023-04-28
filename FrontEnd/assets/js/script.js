@@ -35,6 +35,10 @@ function adminMode() {
 }
 adminMode()
 
+logOut.addEventListener('click', () =>{
+    sessionStorage.clear();
+})
+
 async function fetchWorks() {
     await fetch("http://localhost:5678/api/works")
         .then((response) => response.json())

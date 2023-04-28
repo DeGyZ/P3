@@ -29,20 +29,22 @@ const displayWorksTwo = async () =>{
         let figure = document.createElement("figure")
         figure.setAttribute("data-categoryId", work.categoryId)
         figure.setAttribute("class", "display")
+        figure.classList.add("testParent")
         let image = document.createElement("img")
         image.setAttribute("src",work.imageUrl)
         image.setAttribute("alt",work.title)
         let figcaption = document.createElement("figcaption")
         figcaption.innerText = "éditer"
+        let remove = document.createElement("i")
+        remove.classList.add("test")
+        remove.classList.add("fa-solid")
+        remove.classList.add("fa-trash-can")
+        figure.appendChild(remove)
         figure.appendChild(image)
         figure.appendChild(figcaption)
         galleryTwo.appendChild(figure)
+
     }
+
 }
 displayWorksTwo()
-// Fin affichage //
-
-
-// topLogin.classList.replace("hidden", "display")
-// btn.id.replace("hidden", "display")
-// figure.classList.replace("hidden", "display")
