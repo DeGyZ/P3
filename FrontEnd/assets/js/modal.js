@@ -1,26 +1,66 @@
-
-// Modal //
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
+let back = document.querySelector(".fa-arrow-left")
+let ajouter = document.querySelector(".ajouter");
+let contentGallery = document.querySelector(".contentGallery")
+let contentFormulaire = document.querySelector(".contentFormulaire")
 
 btn.onclick = function() {
   modal.style.display = "block";
+  back.classList.add("caché");
+  back.classList.remove("pasCaché");
+  contentFormulaire.classList.add("caché");
+  contentFormulaire.classList.remove("pasCaché");
 }
+
+ajouter.addEventListener('click', () => {
+  contentGallery.classList.add("caché");
+  contentGallery.classList.remove("pasCaché");
+  back.classList.remove("caché");
+  back.classList.add("pasCaché");
+  contentFormulaire.classList.add("pasCaché");
+  contentFormulaire.classList.remove("caché");
+})
+
+back.addEventListener('click', () =>{
+  contentFormulaire.classList.add("caché");
+  contentFormulaire.classList.remove("pasCaché");
+  back.classList.add("caché");
+  back.classList.remove("pasCaché")
+  contentGallery.classList.add("pasCaché")
+  contentGallery.classList.remove("caché")
+})
 
 span.onclick = function() {
   modal.style.display = "none";
+  contentGallery.classList.add("pasCaché");
+  contentGallery.classList.remove("caché");
+  back.classList.remove("pasCaché");
+  back.classList.add("pcaché");
+  contentFormulaire.classList.add("caché");
+  contentFormulaire.classList.remove("pasCaché");
+  back.classList.add("caché");
+  back.classList.remove("pasCaché");
+  contentFormulaire.classList.add("caché");
+  contentFormulaire.classList.remove("pasCaché");
 }
 
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+    contentGallery.classList.add("pasCaché");
+    contentGallery.classList.remove("caché");
+    back.classList.remove("pasCaché");
+    back.classList.add("pcaché");
+    contentFormulaire.classList.add("caché");
+    contentFormulaire.classList.remove("pasCaché");
+    back.classList.add("caché");
+    back.classList.remove("pasCaché");
+    contentFormulaire.classList.add("caché");
+    contentFormulaire.classList.remove("pasCaché");
   }
 }
-
-// Fin modal //
-
-// Afficher les travaux dans modal //
 
 const displayWorksTwo = async () =>{
     await fetchWorks()
@@ -43,8 +83,7 @@ const displayWorksTwo = async () =>{
         figure.appendChild(image)
         figure.appendChild(figcaption)
         galleryTwo.appendChild(figure)
-
     }
-
 }
 displayWorksTwo()
+

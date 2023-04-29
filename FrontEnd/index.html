@@ -71,20 +71,32 @@
 <div class="interModal">
 <div id="myModal" class="modal">
 	<div class="modal-content">
-		<span class="close">&times;</span>	
+		<div class="modalControl">
+			<i class="fa-solid fa-arrow-left"></i>
+			<span class="close">&times;</span>
+		</div>	
 		<div class="contentGallery">
 			<h3 class="tittleGalleryTwo">Galerie photo</h3>
 			<div class="galleryTwo"></div>
 			<div class="inter">
-				<div class="add">Ajouter une photo</div>
+				<div class="ajouter">Ajouter une photo</div>
 				<div class="sup">supprimer la galerie</div>
 			</div>	
 		</div>
 			<div class="contentFormulaire">
+				<div class="interForm">
 				<h3 class="tittleAddImg">Ajout photo</h3>
-				<form action="" method="post">	
-			</form>
+				<form class="formulaire" action="" method="post">
+					<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+					   <label for="name">Titre</label>
+					   <input type="text" name="name" id="name">	
+					   <label for="pet-select">Catégorie</label>
+						<select name="pets" id="pet-select">
+							<option value=""></option>
+						</select>		
+				</form>
 			</div>
+		</div>
 	</div>
 </div>
 <footer>

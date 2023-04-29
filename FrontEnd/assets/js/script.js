@@ -15,6 +15,7 @@ let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
 
 
+
 function adminMode() {
     if( token ) {
         logIn.classList.add("caché")
