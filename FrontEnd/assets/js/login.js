@@ -13,9 +13,6 @@ loginForm.addEventListener('submit', (event) =>{
     if(email.value === "" ){
         email.style.border = "2px solid red"
         erreurEmail.innerText = "Ce champ ne doit pas être vide"
-    } else if (regexEmail.test(email.value) === false){
-        email.style.border = "2px solid red"
-        erreurEmail.innerText = "Cet E-mail n'est pas valide."
     } else {
         email.style.border = "2px solid green"
         erreurEmail.innerText = ""
@@ -30,10 +27,11 @@ loginForm.addEventListener('submit', (event) =>{
         erreurPassword.innerText = ""
         validation++
     }
+    
 
 
     if(validation = 2){
-        console.log(email.value)
+        console.log(email)
         fetch('http://localhost:5678/api/users/login', {
             method: 'POST',
             headers: {
@@ -43,11 +41,10 @@ loginForm.addEventListener('submit', (event) =>{
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data.message)
+            console.log(data)
             if(data.message === "user not found"){
                 responseErreur.innerText = "Identifiants ou mot de passe incorrect"
             } else{
-                // console.log(data.body)
                 let isLoggedIn = true
                 let token = data.token
                 sessionStorage.setItem("isLoggedIn", isLoggedIn)
@@ -55,6 +52,6 @@ loginForm.addEventListener('submit', (event) =>{
                 location.assign("index.html") 
             }
         })     
-    }
+    } 
 
 })

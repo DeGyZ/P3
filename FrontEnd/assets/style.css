@@ -20,22 +20,25 @@ time, mark, audio, video, a {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	/* font: inherit; */
 	vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+/* ////////////////////// */
 
 .caché {
-	display : none;
-	}
-.pasCaché{
+	display: none;
+}
+
+.pasCaché {
 	display: block;
-	}
+}
+
+/* ////////////////////// */
 
 body {
 	line-height: 1;
@@ -46,37 +49,48 @@ button {
 	border: transparent;
 }
 
-ol, a {
+ol,
+a {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 /** end reset css**/
 body {
-	margin:auto;
-	font-family: 'Work Sans' ;
+	margin: auto;
+	font-family: 'Work Sans';
 	font-size: 14px;
 }
-.login-page{
+
+.login-page {
 	position: relative;
 	min-height: 96.2vh;
 }
+
 .header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px auto;
 	max-width: 1140px;
 }
+
 /* Barre Login */
 .topLogin {
 	display: flex;
@@ -86,15 +100,16 @@ body {
 	background-color: black;
 	height: 50px;
 	color: white;
-	/* display: none; */
 }
-.edition{
+
+.edition {
 	margin: 2%;
 	width: 120px;
 	display: flex;
 	justify-content: space-around;
 }
-.publier{
+
+.publier {
 	padding: 10px;
 	background-color: white;
 	color: black;
@@ -106,25 +121,36 @@ main {
 	max-width: 1140px;
 	margin: 0 auto;
 }
+
 section {
 	margin: 50px 0
 }
 
-.modifOne{
+.modifOne {
 	margin-bottom: 4%;
 }
-article .fa-pen-to-square{
+
+article .fa-pen-to-square {
 	margin-right: 2%;
-	/* display: none; */
 }
-.modifTwo{
+
+.modifTwo {
 	margin: 2% 2% 0 10%;
 }
-figure .fa-pen-to-square{
+
+figure .fa-pen-to-square {
 	margin-right: 2%;
-	/* display: none; */
 }
-h1{
+
+.edition:hover, .edition:focus, 
+.publier:hover, .publier:focus, 
+.modifOne:hover, .modifOne:focus,
+.modifTwo:hover, .modifTwo:focus,
+.modalButton, .modalButton:focus {
+	cursor: pointer;
+}
+
+h1 {
 	display: flex;
 	flex-direction: column;
 	font-family: 'Syne';
@@ -133,25 +159,26 @@ h1{
 	color: #B1663C
 }
 
-h1 > span {
+h1>span {
 	font-family: 'Work Sans';
-	font-size:10px;
+	font-size: 10px;
 	letter-spacing: 0.1em;
-;
 }
 
-h2{
+h2 {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
 	color: #1D6154
 }
+
 nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 
 }
+
 nav a {
 	padding: 0 10px;
 	font-size: 1.2em;
@@ -169,9 +196,11 @@ a:hover {
 	display: flex;
 	align-items: center;
 }
+
 #introduction figure {
 	flex: 1
 }
+
 #introduction img {
 	display: block;
 	margin: auto;
@@ -181,6 +210,7 @@ a:hover {
 #introduction article {
 	flex: 1
 }
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -204,10 +234,11 @@ a:hover {
 	margin: 0 1% 0 1%;
 }
 
-.filters button:focus{
+.filters button:focus {
 	background-color: #1D6154;
 	color: white;
-} 
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -218,7 +249,6 @@ a:hover {
 
 .gallery img {
 	width: 100%;
-
 }
 
 .display {
@@ -233,16 +263,19 @@ a:hover {
 	width: 50%;
 	margin: auto;
 }
+
 #contact {
 	text-align: center;
 
 }
-#contact h2{
+
+#contact h2 {
 	margin-bottom: 20px;
 }
+
 #contact form {
 	text-align: left;
-	margin-top:30px;
+	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -253,23 +286,25 @@ a:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
 #contact label {
 	margin: 2em 0 1em 0;
 }
+
 #contact textarea {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
 	background-color: #1D6154;
-	margin : 2em auto ;
+	margin: 2em auto;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px;
 }
 
 .mdpLost {
@@ -279,11 +314,11 @@ input[type="submit"]{
 footer {
 	background-color: white;
 	padding: 1% 1% 1% 0;
-	
+
 }
 
 .login-footer {
-	position: absolute; 
+	position: absolute;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -297,19 +332,20 @@ footer nav ul {
 
 /* Modale */
 .modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 10%; /* Location of the box */
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 10%;
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
-  .modal-content {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
 	background-color: #fefefe;
 	margin: 0 auto;
 	padding: 20px;
@@ -317,58 +353,71 @@ footer nav ul {
 	width: 500px;
 	height: 600px;
 	padding-bottom: 0;
-  }
-  .close {
-	color: #aaaaaa;
+}
+
+.modalControl{
+	background-color: #793e3e;
+	position: relative;
+}
+.close {
 	float: right;
 	font-size: 28px;
-	font-weight: bold;
-  }
-  .modalControl:hover,
-  .modalControl:focus {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.fa-arrow-left{
+	position: absolute;
+	top: 7px;
+	left: 0;
+}
+
+.modalControl:hover,
+.modalControl:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
-  }
-
-.modalControl{
-	display: inline;
 }
-.titreModal{
+
+.titreModal {
 	display: flex;
 	text-align: center;
 	justify-content: center;
 	margin: 1%;
 }
-.titreModal h2{
+
+.titreModal h2 {
 	margin-right: 2%;
 }
 
-.interModal h3{
-
+.interModal h3 {
 	color: #000;
 	font-family: 'work sans';
 	font-size: 26px;
 	font-weight: 400;
-	margin: 10%;
+	margin: 7%;
 }
-.inter{
+
+.inter {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin-top: 5%;
 }
-.contentGallery{
+
+.contentGallery {
 	height: 80%;
-	/* display: none; */
 }
-.tittleGalleryTwo{
+
+.tittleGalleryTwo {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.contentGallery .galleryTwo{
+
+.contentGallery .galleryTwo {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -379,11 +428,13 @@ footer nav ul {
 	padding-bottom: 5%;
 	border-bottom: 1px solid #B3B3B3;
 }
-.galleryTwo img{
+
+.galleryTwo img {
 	width: 100%;
 	margin: 0;
 }
-.ajouter{
+
+.ajouter {
 	width: 237px;
 	padding: 2%;
 	background-color: #1D6154;
@@ -393,50 +444,119 @@ footer nav ul {
 	justify-content: center;
 	align-items: center;
 }
-.sup{
+
+.ajouter:hover, .ajouter:focus{
+	cursor: pointer;
+}
+
+.sup {
 	color: red;
 	margin: 1%;
 }
+
+.sup:hover, .sup:focus{
+	cursor: pointer;
+}
+
 /* FORMULAIRE */
 
+.contentFormulaire {
+}
+
 .interForm{
-
-
-	
-}
-.tittleAddImg{
-
-}
-.interForm .formulaire{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+}
+
+.tittleAddImg {
+}
+
+.formulaire{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 9%;
+}
+
+.insertPhoto {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #E8F1F6;
+	height: 170px;
+}
+
+.insertPhoto input {
+	visibility: hidden;
+}
+
+.formulaire label {
+	margin: 5% 0 5% 0;
+}
+
+.formulaire input{
+	height: 50px;
+	width: 100%;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.selectId{
+	height: 50px;
+	width: 100%;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	padding: 3%;
+}
+
+.formValid{
+	width: 237px;
+	height: 36px;
+	background-color: #A7A7A7;
+	border-radius: 60px;
+    margin: 7% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formValid:hover, .formValid:focus{
+	cursor: pointer;
 }
 /* FIN FORMULAIRE */
-#myBtn{
+#myBtn {
 	background-color: #fffef8;
 	font-size: large;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 110px;
-	/* display: none; */
 }
-#myBtn i{
+
+#myBtn i {
 	margin-right: 3%;
 }
-/* Fin Modale */
 
-.testParent{
+.testParent {
 	position: relative;
 }
-.test{
+
+.test {
 	position: absolute;
 	right: 5px;
 	top: 5px;
 }
 
-.testTwo{
+.testTwo {
 	border: solid red;
 }
+
+/* Fin Modale */

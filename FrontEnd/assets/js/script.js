@@ -3,10 +3,9 @@ let categories = []
 let all = []
 let filters = document.querySelector(".filters")
 let gallery = document.querySelector("#portfolio .gallery")
-let galleryTwo = document.querySelector(".galleryTwo")
-
 let token = sessionStorage.getItem('Token')
-
+let galleryTwo = document.querySelector(".galleryTwo")
+let selectId = document.querySelector(".selectId")
 let logIn = document.querySelector(".logIn")
 let logOut = document.querySelector(".logOut")
 let topLogin = document.querySelector(".topLogin")
@@ -14,7 +13,7 @@ let modifOne = document.querySelector(".modifOne")
 let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
 
-
+console.log(token)
 
 function adminMode() {
     if( token ) {
@@ -31,8 +30,6 @@ function adminMode() {
         modifTwo.classList.add("caché")
         logOut.classList.add("caché")        
     }
-
-
 }
 adminMode()
 
@@ -83,7 +80,6 @@ displayWorks()
 async function displayCategories() {
     await fetchWorks()
     await fetchCategories()
-    console.log(categories)
 
     categories.unshift({name:"Tous"})
 
@@ -104,12 +100,22 @@ async function displayCategories() {
                 } else {
                     figure.classList.replace("hidden", "display")
                 }
-                
             }
         })
     }
 }
 displayCategories()
 
-console.log(sessionStorage.getItem("Token"))
-console.log(sessionStorage.getItem("isLoggedIn"))
+async function displayCategoriesTwo() {
+    await fetchWorks()
+    await fetchCategories()
+    console.log(categories)
+
+    for (let category of categories) {
+        let optionForm = document.createElement("option")
+        optionForm.value = category.name
+        optionForm.innerText = category.name
+        selectId.appendChild(optionForm)
+    }
+}
+displayCategoriesTwo()
