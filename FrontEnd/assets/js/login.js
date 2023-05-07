@@ -3,7 +3,30 @@ let erreurEmail = document.getElementById('erreurEmail')
 const regexEmail = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm
 let password = document.getElementById('password')
 let loginForm = document.getElementById('loginForm')
-let responseErreur = document.getElementById('responseErreur')
+
+const loginUser = async () => {
+    await fetch ('http://localhost:5678/api/users/login', {
+        method: 'POST',
+        headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+        body: JSON.stringify({email:email.value, password:password.value})
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        if(data.error || data.message === "user not found") {
+        let responseErreur = document.getElementById('responseErreur')
+        responseErreur.innerText = "Identifiants ou mot de passe incorrect"
+        return;
+}
+      let isLoggedIn = true
+      let token = data.token
+      sessionStorage.setItem("isLoggedIn", isLoggedIn)
+      sessionStorage.setItem("Token", token)
+      location.assign("index.html")       
+    })
+    }
 
 loginForm.addEventListener('submit', (event) =>{
     event.preventDefault()
@@ -28,30 +51,8 @@ loginForm.addEventListener('submit', (event) =>{
         validation++
     }
     
+    if(validation === 2){
+       loginUser()
+}}
 
-
-    if(validation = 2){
-        console.log(email)
-        fetch('http://localhost:5678/api/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8'
-              },
-              body: JSON.stringify({email:email.value, password:password.value})
-        })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data)
-            if(data.message === "user not found"){
-                responseErreur.innerText = "Identifiants ou mot de passe incorrect"
-            } else{
-                let isLoggedIn = true
-                let token = data.token
-                sessionStorage.setItem("isLoggedIn", isLoggedIn)
-                sessionStorage.setItem("Token", token)
-                location.assign("index.html") 
-            }
-        })     
-    } 
-
-})
+)

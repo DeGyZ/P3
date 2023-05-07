@@ -374,7 +374,8 @@ footer nav ul {
 }
 
 .modalControl:hover,
-.modalControl:focus {
+.modalControl:focus,
+.test:hover, .test:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
@@ -491,15 +492,38 @@ footer nav ul {
 	justify-content: center;
 	align-items: center;
 	background-color: #E8F1F6;
-	height: 170px;
+	height: 150px;
+}
+
+.fa-image {
+	height: 10px;
 }
 
 .insertPhoto input {
-	visibility: hidden;
+	display: none;
+}
+
+.imgInput {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	background-color: #CBD6DC;
+	margin-top: 2%;
+}
+
+.imgInput:hover, .imgInput:focus {
+	cursor: pointer;
+}
+
+.formulaire img {
+	height: 100%;
 }
 
 .formulaire label {
-	margin: 5% 0 5% 0;
+	margin: 5% 0 3% 0;
 }
 
 .formulaire input{

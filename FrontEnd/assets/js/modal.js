@@ -1,3 +1,4 @@
+
 let modal = document.getElementById("myModal");
 let btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
@@ -5,7 +6,11 @@ let back = document.querySelector(".fa-arrow-left")
 let ajouter = document.querySelector(".ajouter");
 let contentGallery = document.querySelector(".contentGallery")
 let contentFormulaire = document.querySelector(".contentFormulaire")
-
+let faImage = document.querySelector(".fa-image")
+let pForm = document.querySelector(".pForm")
+let imgInput = document.querySelector(".imgInput")
+let imageInput = document.getElementById('imageInput');
+let previewImage = document.getElementById('previewImage');
 
 btn.onclick = function() {
   modal.style.display = "block";
@@ -95,4 +100,52 @@ const displayWorksTwo = async () =>{
     }
 }
 displayWorksTwo()
+
+imageInput.addEventListener('change', function() {
+  let file = this.files[0];
+  let reader = new FileReader();
+
+  reader.onload = function(e) {
+      previewImage.src = e.target.result;
+  }
+
+  reader.readAsDataURL(file);
+  previewImage.classList.remove("caché")
+  faImage.classList.add("caché")
+  imgInput.style.display = "none";
+  pForm.classList.add("caché")
+});
+
+let formValidButton = document.querySelector(".formValid");
+formValidButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+
+  
+  let title = document.querySelector("#name").value;
+  let categoryId = document.querySelector("#pet-select").value;
+  let image = document.querySelector("#previewImage").src;
+
+  fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      'accept': '*/*',
+      'authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({
+      title: title,
+      categoryId: categoryId,
+      imageUrl: image
+    })
+  })
+  .then(response => {
+    if (response.ok) {
+      window.location.href = "index.html";
+    } else {
+      console.log(`Erreur lors de l'ajout du travail : ${response.status}`);
+    }
+  })
+  .catch(error => console.error(`Erreur lors de l'envoi des données : ${error}`));
+});
 

@@ -1,3 +1,4 @@
+
 let works = []
 let categories = []
 let all = []
@@ -12,8 +13,6 @@ let topLogin = document.querySelector(".topLogin")
 let modifOne = document.querySelector(".modifOne")
 let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
-
-console.log(token)
 
 function adminMode() {
     if( token ) {
