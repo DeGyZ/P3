@@ -43,7 +43,7 @@
 			<article>
 				<div class="modifOne"><i class="fa-regular fa-pen-to-square"></i>modifier</div>
 				<h2>Designer d'espace</h2>
-				<p class="p">Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la
 					livraison finale du chantier.</p>
 				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les
 					couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du
@@ -86,26 +86,25 @@
 					<h3 class="tittleGalleryTwo">Galerie photo</h3>
 					<div class="galleryTwo"></div>
 					<div class="inter">
-						<div class="ajouter">Ajouter une photo</div>
-						<div class="sup">supprimer la galerie</div>
+						<div class="addContent">Ajouter une photo</div>
+						<div class="deletContent">supprimer la galerie</div>
 					</div>
 				</div>
 				<div class="contentFormulaire">
 					<div class="interForm">
 						<h3 class="tittleAddImg">Ajout photo</h3>
-						<form class="formulaire" action="" method="post" enctype="multipart/form-data">
-							
-							<div class="insertPhoto">
+						<form class="formulaire" action="" method="post" enctype="multipart/form-data">						
+							<div class="insertImg">
 								<i class="fa-sharp fa-regular fa-image fa-2xl"></i>
 								<label class="imgInput"  for="imageInput">+ Ajouter une photo</label>
 								<input type="file" id="imageInput" name="image" accept="image/png, image/jpeg">
-								<img id="previewImage" src="#" alt="Image preview" class="caché">
+								<img id="previewImage" src="#" alt="Image preview" class="hidden">
 								<p class="pForm">jpg, png : 4mo max</p>
 							</div>
-							<label for="name">Titre</label>
-							<input type="text" name="name" id="name">
-							<label for="pet-select">Catégorie</label>
-							<select class="selectId" name="pets" id="pet-select">
+							<label for="workName">Titre</label>
+							<input type="text" name="workName" id="workName">
+							<label for="select">Catégorie</label>
+							<select class="selectId" name="pets" id="select">
 							</select>
 						</form>
 						<div class="formValid">Valider</div>

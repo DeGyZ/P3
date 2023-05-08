@@ -16,18 +16,18 @@ let modalButton = document.querySelector(".modalButton")
 
 function adminMode() {
     if( token ) {
-        logIn.classList.add("caché")
+        logIn.classList.add("hidden")
         filters.classList.remove("filters")
-        filters.classList.add("caché")
+        filters.classList.add("hidden")
     }  else {
         topLogin.classList.remove("topLogin")
-        topLogin.classList.add("caché")
+        topLogin.classList.add("hidden")
         modalButton.removeAttribute("id")
         modalButton.classList.remove("modalButton")
-        modalButton.classList.add("caché")
-        modifOne.classList.add("caché")
-        modifTwo.classList.add("caché")
-        logOut.classList.add("caché")        
+        modalButton.classList.add("hidden")
+        modifOne.classList.add("hidden")
+        modifTwo.classList.add("hidden")
+        logOut.classList.add("hidden")        
     }
 }
 adminMode()
@@ -105,16 +105,3 @@ async function displayCategories() {
 }
 displayCategories()
 
-async function displayCategoriesTwo() {
-    await fetchWorks()
-    await fetchCategories()
-    console.log(categories)
-
-    for (let category of categories) {
-        let optionForm = document.createElement("option")
-        optionForm.value = category.name
-        optionForm.innerText = category.name
-        selectId.appendChild(optionForm)
-    }
-}
-displayCategoriesTwo()
