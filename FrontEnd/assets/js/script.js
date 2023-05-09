@@ -14,6 +14,18 @@ let modifOne = document.querySelector(".modifOne")
 let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
 
+
+const pageAccessedByReload = (
+    (window.performance.navigation && window.performance.navigation.type === 1) ||
+      window.performance
+        .getEntriesByType('navigation')
+        .map((nav) => nav.type)
+        .includes('reload')
+  );
+  
+  alert(pageAccessedByReload);
+// Affichage de la page administrateur
+
 function adminMode() {
     if( token ) {
         logIn.classList.add("hidden")
@@ -32,9 +44,13 @@ function adminMode() {
 }
 adminMode()
 
+// Déconnection
+
 logOut.addEventListener('click', () =>{
     sessionStorage.clear();
 })
+
+// Appel des travaux
 
 async function fetchWorks() {
     await fetch("http://localhost:5678/api/works")
@@ -46,6 +62,8 @@ async function fetchWorks() {
         .catch(error => console.log(error));
 }
 
+// Appel des catégories
+
 const fetchCategories = async () =>{
     await fetch('http://localhost:5678/api/categories')
     .then((response)=>response.json())
@@ -56,6 +74,8 @@ const fetchCategories = async () =>{
     })
     .catch(error => console.log(error))
 }
+
+// Affichage des travaux
 
 const displayWorks = async () =>{
     await fetchWorks()
@@ -76,6 +96,8 @@ const displayWorks = async () =>{
 }
 displayWorks()
 
+// Affichage des catégories
+
 async function displayCategories() {
     await fetchWorks()
     await fetchCategories()
@@ -86,7 +108,7 @@ async function displayCategories() {
         let button = document.createElement("button")
         button.innerText = category.name
         filters.appendChild(button)
-        button.addEventListener("click", function (event) {
+        button.addEventListener("click", function () {
             let figures = document.querySelectorAll(".gallery figure")
             for (let figure of figures) {
                 console.log(category.id)

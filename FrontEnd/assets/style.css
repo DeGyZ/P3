@@ -35,7 +35,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 .visible {
-	display: block;
+	display: block !important;
 }
 
 /* ////////////////////// */
@@ -573,8 +573,11 @@ footer nav ul {
 	top: 5px;
 }
 
-.testTwo {
-	border: solid red;
+.moveOn {
+	position: absolute;
+	top: 5px;
+	right: 25px;
+	display: none;
 }
 
 /* Fin Modale */

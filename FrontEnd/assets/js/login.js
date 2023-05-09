@@ -1,8 +1,10 @@
 let email = document.getElementById('email')
 let erreurEmail = document.getElementById('erreurEmail')
-const regexEmail = /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/gm
+const regexEmail = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 let password = document.getElementById('password')
 let loginForm = document.getElementById('loginForm')
+
+// Connexion de l'utilisateur
 
 const loginUser = async () => {
     await fetch ('http://localhost:5678/api/users/login', {
@@ -28,6 +30,8 @@ const loginUser = async () => {
     })
     }
 
+// Vérification du formulaire de connexion + connexion
+
 loginForm.addEventListener('submit', (event) =>{
     event.preventDefault()
     event.stopPropagation()
@@ -36,6 +40,9 @@ loginForm.addEventListener('submit', (event) =>{
     if(email.value === "" ){
         email.style.border = "2px solid red"
         erreurEmail.innerText = "Ce champ ne doit pas être vide"
+    } else if (email.value.match(regexEmail) === null){
+        email.style.border = "2px solid red"
+        erreurEmail.innerText = "Votre email n'est pas valide"
     } else {
         email.style.border = "2px solid green"
         erreurEmail.innerText = ""

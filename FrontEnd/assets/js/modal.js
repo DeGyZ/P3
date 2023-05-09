@@ -12,6 +12,9 @@ let imgInput = document.querySelector(".imgInput");
 let imageInput = document.getElementById('imageInput');
 let previewImage = document.getElementById('previewImage');
 
+// Apparition modale + déplacements à l'intèrieur
+
+
 btn.onclick = function() {
   modal.style.display = "block";
   back.classList.add("hidden");
@@ -48,7 +51,7 @@ span.onclick = function() {
   contentFormulaire.classList.remove("visible");
 }
 
-window.onclick = function(event) {
+window.onclick = function() {
   if (event.target == modal) {
     modal.style.display = "none";
     contentGallery.classList.add("visible");
@@ -60,7 +63,7 @@ window.onclick = function(event) {
   }
 }
 
-console.log(sessionStorage.getItem("Token"))
+// Affichage des travaux 
 
 const displayWorksTwo = async () =>{
     await fetchWorks()
@@ -75,6 +78,16 @@ const displayWorksTwo = async () =>{
         image.setAttribute("alt",work.title)
         let figcaption = document.createElement("figcaption")
         figcaption.innerText = "éditer"
+        let move = document.createElement("div")
+        move.classList.add("moveOn")
+        move.classList.add("fa-solid")
+        move.classList.add("fa-arrows-up-down-left-right")
+        figure.addEventListener('mouseenter', () => {
+          move.classList.add("visible")
+        })
+        figure.addEventListener('mouseleave', () => {
+          move.classList.remove("visible")
+        })
         let remove = document.createElement("div")
         remove.classList.add("test")
         remove.classList.add("fa-solid")
@@ -93,13 +106,17 @@ const displayWorksTwo = async () =>{
           console.log(work.id)
         })
 
+        figure.appendChild(move)
         figure.appendChild(remove)
         figure.appendChild(image)
         figure.appendChild(figcaption)
         galleryTwo.appendChild(figure)
+
     }
 }
 displayWorksTwo()
+
+// Affichage des catégories dans le formulaire
 
 imageInput.addEventListener('change', function() {
   let file = this.files[0];
@@ -116,10 +133,11 @@ imageInput.addEventListener('change', function() {
   pForm.classList.add("hidden")
 });
 
+// Affichage des catégories dans le formulaire
+
 async function displayCategoriesTwo() {
   await fetchWorks()
   await fetchCategories()
-  console.log(categories)
 
   for (let category of categories) {
       let optionForm = document.createElement("option")
@@ -130,36 +148,54 @@ async function displayCategoriesTwo() {
 }
 displayCategoriesTwo()
 
+// Validation du formulaire
+
 let formValidButton = document.querySelector(".formValid");
 formValidButton.addEventListener('click', (event) => {
-  event.preventDefault();
+event.preventDefault();
+event.stopPropagation();
 
-  let title = document.querySelector("#workName").value;
-  let categoryId = document.querySelector("#select").value;
-  let imageUrl = document.querySelector("#previewImage").src;
+let title = document.querySelector("#workName").value;
+let category = document.querySelector("#select").value;
+let image = document.querySelector("#previewImage").src;
+
+ if (title === '') {
+    alert("Veuillez saisir un titre pour votre travail.");
+    return;
+  }
+
+  if (image === 'http://127.0.0.1:5500/P3/FrontEnd/index.html#') {
+    alert("Veuillez sélectionner une image pour votre travail.");
+    return;
+  } 
+  let imageInput = document.querySelector("#imageInput")
   
-  console.log(title)
-  console.log(imageUrl)
-  console.log(categoryId)
-
   let formData = new FormData();
-  formData.append('title', title);
-  formData.append('imageUrl', imageUrl);
-  formData.append('categoryId', categoryId);
+  formData.append("title", title);
+  formData.append("image", imageInput.files[0]);
+  formData.append("category", category);
 
-  fetch('http://localhost:5678/api/works', {
-    method: 'POST',
+  console.log(formData.get("title"));
+  console.log(formData.get("image"));
+  console.log(formData.get("category"));
+  
+
+  fetch(`http://localhost:5678/api/works`, {
+    method: "POST",
     headers: {
-      'authorization':`Bearer ${token}`
+      "authorization":`Bearer ${token}`
     },
     body: formData
   })
-  .then(response => {
-    if (response.ok) {
-      window.location.href = "index.html";
+  .then((response) => response.json())
+  .then((data) => {
+    if (data.error) {
+      alert("Erreur lors de l'ajout de votre travail")
     } else {
-      console.log(`Erreur lors de l'ajout du travail : ${response.status}`);
+      
+      displayWorks()
+      displayWorksTwo()
     }
-  })
-  .catch(error => console.error(`Erreur lors de l'envoi des données : ${error}`));
+  }) 
+  
 });
