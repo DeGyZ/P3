@@ -14,7 +14,6 @@ let modifOne = document.querySelector(".modifOne")
 let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
 
-
 const pageAccessedByReload = (
     (window.performance.navigation && window.performance.navigation.type === 1) ||
       window.performance
@@ -24,6 +23,7 @@ const pageAccessedByReload = (
   );
   
   alert(pageAccessedByReload);
+
 // Affichage de la page administrateur
 
 function adminMode() {
@@ -56,10 +56,9 @@ async function fetchWorks() {
     await fetch("http://localhost:5678/api/works")
         .then((response) => response.json())
         .then((worksResponse) => {
-            // console.log(worksResponse)
             works = worksResponse;
         })
-        .catch(error => console.log(error));
+        .catch();
 }
 
 // Appel des catégories
@@ -68,18 +67,16 @@ const fetchCategories = async () =>{
     await fetch('http://localhost:5678/api/categories')
     .then((response)=>response.json())
     .then((categoriesResponse)=>{
-        // console.log(categoriesResponse)
         categories = categoriesResponse
-
     })
-    .catch(error => console.log(error))
 }
 
 // Affichage des travaux
 
 const displayWorks = async () =>{
     await fetchWorks()
-    
+    //nettoyage de la galerie pour éviter les doublons
+    gallery.innerHTML = ""
     for(let work of works){
         let figure = document.createElement("figure")
         figure.setAttribute("data-categoryId", work.categoryId)
@@ -111,7 +108,6 @@ async function displayCategories() {
         button.addEventListener("click", function () {
             let figures = document.querySelectorAll(".gallery figure")
             for (let figure of figures) {
-                console.log(category.id)
                 if (category.id !== undefined){
                     if (parseInt(figure.getAttribute("data-categoryId")) === category.id) {
                         figure.classList.replace("hidden", "display")
@@ -126,4 +122,3 @@ async function displayCategories() {
     }
 }
 displayCategories()
-

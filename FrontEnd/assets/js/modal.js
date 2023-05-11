@@ -14,14 +14,13 @@ let previewImage = document.getElementById('previewImage');
 
 // Apparition modale + déplacements à l'intèrieur
 
-
-btn.onclick = function() {
-  modal.style.display = "block";
-  back.classList.add("hidden");
-  back.classList.remove("visible");
-  contentFormulaire.classList.add("hidden");
-  contentFormulaire.classList.remove("visible");
-}
+btn.addEventListener("click", function() {
+    modal.style.display = "block";
+    back.classList.add("hidden");
+    back.classList.remove("visible");
+    contentFormulaire.classList.add("hidden");
+    contentFormulaire.classList.remove("visible");
+})
 
 addContent.addEventListener('click', () => {
   contentGallery.classList.add("hidden");
@@ -41,33 +40,26 @@ back.addEventListener('click', () =>{
   contentGallery.classList.remove("hidden");
 })
 
-span.onclick = function() {
-  modal.style.display = "none";
-  contentGallery.classList.add("visible");
-  contentGallery.classList.remove("hidden");
-  back.classList.remove("visible");
-  back.classList.add("hidden");
-  contentFormulaire.classList.add("hidden");
-  contentFormulaire.classList.remove("visible");
-}
+span.addEventListener('click', closeModal())
 
-window.onclick = function() {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    contentGallery.classList.add("visible");
-    contentGallery.classList.remove("hidden");
-    back.classList.remove("visible");
-    back.classList.add("visible");
-    contentFormulaire.classList.add("hidden");
-    contentFormulaire.classList.remove("visible");
-  }
-}
+// window.onclick = function() {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//     contentGallery.classList.add("visible");
+//     contentGallery.classList.remove("hidden");
+//     back.classList.remove("visible");
+//     back.classList.add("visible");
+//     contentFormulaire.classList.add("hidden");
+//     contentFormulaire.classList.remove("visible");
+//   }
+// }
 
 // Affichage des travaux 
 
 const displayWorksTwo = async () =>{
     await fetchWorks()
-    
+    //nettoyage de la galerie pour éviter les doublons
+    galleryTwo.innerHTML = ""
     for(let work of works){
         let figure = document.createElement("figure")
         figure.setAttribute("data-categoryId", work.categoryId)
@@ -93,7 +85,6 @@ const displayWorksTwo = async () =>{
         remove.classList.add("fa-solid")
         remove.classList.add("fa-trash-can")
         remove.addEventListener('click', () => {
-          console.log(token)
           fetch(`http://localhost:5678/api/works/${work.id}`, {
             method:"DELETE",
             headers: {
@@ -102,16 +93,16 @@ const displayWorksTwo = async () =>{
               "authorization":`Bearer ${token}`
             } 
           }) 
-          .then(response => console.log(response.status))
-          console.log(work.id)
+          .then(() => {
+              displayWorks()
+              displayWorksTwo()
+          })
         })
-
         figure.appendChild(move)
         figure.appendChild(remove)
         figure.appendChild(image)
         figure.appendChild(figcaption)
         galleryTwo.appendChild(figure)
-
     }
 }
 displayWorksTwo()
@@ -175,11 +166,6 @@ let image = document.querySelector("#previewImage").src;
   formData.append("image", imageInput.files[0]);
   formData.append("category", category);
 
-  console.log(formData.get("title"));
-  console.log(formData.get("image"));
-  console.log(formData.get("category"));
-  
-
   fetch(`http://localhost:5678/api/works`, {
     method: "POST",
     headers: {
@@ -192,10 +178,29 @@ let image = document.querySelector("#previewImage").src;
     if (data.error) {
       alert("Erreur lors de l'ajout de votre travail")
     } else {
-      
       displayWorks()
       displayWorksTwo()
+        // .then(() => modal.style.display = "none")
+
+        //nettoyage champ image
+        previewImage.classList.add("hidden")
+        faImage.classList.remove("hidden")
+        imgInput.style.display = "block";
+        pForm.classList.remove("hidden")
+
+        //nettoyage modal
+       closeModal()
     }
   }) 
   
 });
+
+function closeModal () {
+  modal.style.display = "none";
+  contentGallery.classList.add("visible");
+  contentGallery.classList.remove("hidden");
+  back.classList.remove("visible");
+  back.classList.add("hidden");
+  contentFormulaire.classList.add("hidden");
+  contentFormulaire.classList.remove("visible");
+}
