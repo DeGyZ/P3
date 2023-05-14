@@ -14,6 +14,14 @@ let previewImage = document.getElementById('previewImage');
 
 // Apparition modale + déplacements à l'intèrieur
 
+btn.onclick = function() {
+  modal.style.display = "block";
+  back.classList.add("caché");
+  back.classList.remove("pasCaché");
+  contentFormulaire.classList.add("caché");
+  contentFormulaire.classList.remove("pasCaché");
+}
+
 btn.addEventListener("click", function() {
     modal.style.display = "block";
     back.classList.add("hidden");
@@ -40,19 +48,19 @@ back.addEventListener('click', () =>{
   contentGallery.classList.remove("hidden");
 })
 
-span.addEventListener('click', closeModal())
+span.addEventListener('click', closeModal);
 
-// window.onclick = function() {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//     contentGallery.classList.add("visible");
-//     contentGallery.classList.remove("hidden");
-//     back.classList.remove("visible");
-//     back.classList.add("visible");
-//     contentFormulaire.classList.add("hidden");
-//     contentFormulaire.classList.remove("visible");
-//   }
-// }
+window.onclick = function() {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    contentGallery.classList.add("visible");
+    contentGallery.classList.remove("hidden");
+    back.classList.remove("visible");
+    back.classList.add("visible");
+    contentFormulaire.classList.add("hidden");
+    contentFormulaire.classList.remove("visible");
+  }
+}
 
 // Affichage des travaux 
 
@@ -180,16 +188,16 @@ let image = document.querySelector("#previewImage").src;
     } else {
       displayWorks()
       displayWorksTwo()
-        // .then(() => modal.style.display = "none")
+      .then(() => modal.style.display = "none")
 
-        //nettoyage champ image
-        previewImage.classList.add("hidden")
-        faImage.classList.remove("hidden")
-        imgInput.style.display = "block";
-        pForm.classList.remove("hidden")
+      //nettoyage champ image
+      previewImage.classList.add("hidden")
+      faImage.classList.remove("hidden")
+      imgInput.style.display = "flex";
+      pForm.classList.remove("hidden")
 
-        //nettoyage modal
-       closeModal()
+      //nettoyage modal
+      closeModal()
     }
   }) 
   

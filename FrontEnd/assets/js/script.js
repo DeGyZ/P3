@@ -14,16 +14,6 @@ let modifOne = document.querySelector(".modifOne")
 let modifTwo = document.querySelector(".modifTwo")
 let modalButton = document.querySelector(".modalButton")
 
-const pageAccessedByReload = (
-    (window.performance.navigation && window.performance.navigation.type === 1) ||
-      window.performance
-        .getEntriesByType('navigation')
-        .map((nav) => nav.type)
-        .includes('reload')
-  );
-  
-  alert(pageAccessedByReload);
-
 // Affichage de la page administrateur
 
 function adminMode() {
@@ -75,7 +65,6 @@ const fetchCategories = async () =>{
 
 const displayWorks = async () =>{
     await fetchWorks()
-    //nettoyage de la galerie pour éviter les doublons
     gallery.innerHTML = ""
     for(let work of works){
         let figure = document.createElement("figure")
